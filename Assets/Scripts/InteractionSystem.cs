@@ -18,9 +18,20 @@ public class InteractionSystem : MonoBehaviour
     private float currentPressDuration = 0f;
     // Detected Item
     private GameObject targetObject;
-    // Carrying object?
+    // Carrying object
     private GameObject carryingObject;
+    // player
+    public PlayerMovement playerMovement;
+    // silk prefab
+    public GameObject silkPrefab;
+    // silk
+    private GameObject currentSilk;
+    // Spinning
+    public bool isSpittingSilk = false;
+    // ceiling position when start spinning
+    private Vector2 ceilingPosition;
 
+    [SerializeField] private Rigidbody2D rb;
 
     void Update()
     {
@@ -29,7 +40,7 @@ public class InteractionSystem : MonoBehaviour
             DropObject();
         }
 
-        if (DetectObject())
+        if (!isSpittingSilk && DetectObject())
         {
             Item item = targetObject.GetComponent<Item>();
 
@@ -65,6 +76,55 @@ public class InteractionSystem : MonoBehaviour
                 targetObject = null; // reset target
             }
         }
+
+        if ((playerMovement.isOnCeiling || isSpittingSilk) && LongPressing())
+        {
+            if (!isSpittingSilk)
+            {
+                StartSpittingSilk(); // 开始吐丝
+                isSpittingSilk = true; // 标记为正在吐丝
+            }
+
+            MoveDownSlowly(); // 玩家缓慢下移
+            UpdateSilk(); // 更新蛛丝状态
+        }
+        else
+        {
+            isSpittingSilk = false; // 停止吐丝
+        }
+    }
+
+    public void StartSpittingSilk()
+    {
+        ceilingPosition = transform.position; // 假设玩家当前位置就是ceiling的位置
+        ceilingPosition.y += 0.5f;
+        currentSilk = Instantiate(silkPrefab, ceilingPosition, Quaternion.identity); // 生成蛛丝
+    }
+
+    public void UpdateSilk()
+    {
+        if (currentSilk != null)
+        {
+            Vector2 playerPosition = transform.position;
+            float distance = Vector2.Distance(playerPosition, ceilingPosition); // 计算距离
+            Vector2 midPoint = (playerPosition + ceilingPosition) / 2; // 计算中间点
+
+            // 调整蛛丝位置
+            currentSilk.transform.position = midPoint;
+
+            // 调整蛛丝长度
+            currentSilk.transform.localScale = new Vector3(currentSilk.transform.localScale.x, distance, currentSilk.transform.localScale.z);
+            //currentSilk.transform.localScale = new Vector3(distance * 0.25f, currentSilk.transform.localScale.y, currentSilk.transform.localScale.z);
+
+            // 可能需要调整蛛丝的旋转以确保它垂直
+            currentSilk.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //currentSilk.transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+    }
+
+    private void MoveDownSlowly()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, -playerMovement.speed / 2); // 假设下移速度为常规速度的一半
     }
 
     private void DropObject()

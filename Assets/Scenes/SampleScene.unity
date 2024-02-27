@@ -153,10 +153,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -184,7 +184,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12916133, y: 0.0000037937268}
+  m_ConnectedAnchor: {x: 0.12916127, y: -0.0000058243922}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -238,10 +238,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -269,7 +269,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1622772, y: 0.0000043257523}
+  m_ConnectedAnchor: {x: 0.1622772, y: 0.000002530791}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -323,10 +323,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -354,7 +354,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1624138, y: -0.06758255}
+  m_ConnectedAnchor: {x: 0.1624139, y: -0.037124775}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -408,10 +408,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -439,7 +439,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12589228, y: -0.034149684}
+  m_ConnectedAnchor: {x: 0.12589219, y: -0.018683111}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -524,10 +524,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -793,10 +793,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -824,7 +824,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.096270606, y: -0.06542892}
+  m_ConnectedAnchor: {x: 0.09627068, y: -0.036441155}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1237,16 +1237,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712094654c0ff32408f8746c05cf3352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
   isClimbing: 0
   isOnFloor: 1
   isOnCeiling: 0
   isAnimating: 0
+  isSilkClimbing: 0
   rb: {fileID: 582164677}
   groundCheck: {fileID: 1819091867}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   bezierMoveScript: {fileID: 582164682}
+  interactionSystem: {fileID: 582164681}
 --- !u!114 &582164681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1267,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   longPressDuration: 2
+  playerMovement: {fileID: 582164680}
+  silkPrefab: {fileID: 4082354412345224453, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+  isSpittingSilk: 0
+  rb: {fileID: 582164677}
 --- !u!114 &582164682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,10 +1352,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1376,7 +1383,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.14244671, y: -0.034189187}
+  m_ConnectedAnchor: {x: 0.14244671, y: -0.018682746}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1512,10 +1519,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1543,7 +1550,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.13247173, y: 0.0000029916619}
+  m_ConnectedAnchor: {x: 0.13247173, y: 0.0000017502786}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1597,10 +1604,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1628,7 +1635,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10618443, y: 0.06601929}
+  m_ConnectedAnchor: {x: 0.106184304, y: 0.036629286}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1897,10 +1904,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1928,7 +1935,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10271937, y: -0.034019887}
+  m_ConnectedAnchor: {x: 0.10271911, y: -0.018634142}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1982,10 +1989,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2013,7 +2020,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.102879375, y: 0.065832414}
+  m_ConnectedAnchor: {x: 0.10287937, y: 0.036570884}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2197,10 +2204,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2228,7 +2235,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.11591287, y: -0.0000054085335}
+  m_ConnectedAnchor: {x: 0.11591304, y: -0.0000031642792}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2282,10 +2289,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2313,7 +2320,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1755572, y: -0.034280695}
+  m_ConnectedAnchor: {x: 0.17555714, y: -0.018712785}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2367,10 +2374,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2398,7 +2405,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.0962705, y: 0.06542708}
+  m_ConnectedAnchor: {x: 0.09627044, y: 0.03644779}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2756,10 +2763,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2787,7 +2794,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.11591358, y: -0.000002261002}
+  m_ConnectedAnchor: {x: 0.11591357, y: -0.0000013228043}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2841,10 +2848,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2872,7 +2879,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.13582487, y: 0.0341957}
+  m_ConnectedAnchor: {x: 0.13582484, y: 0.018695476}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2926,10 +2933,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2957,7 +2964,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.14587007, y: 0.06729072}
+  m_ConnectedAnchor: {x: 0.1458701, y: 0.037035096}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3011,10 +3018,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3042,7 +3049,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12589203, y: -0.034157593}
+  m_ConnectedAnchor: {x: 0.12589195, y: -0.018683067}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3096,10 +3103,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3127,7 +3134,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.04978843, y: 0.032825157}
+  m_ConnectedAnchor: {x: 0.049788587, y: 0.018257784}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3181,10 +3188,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3212,7 +3219,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.11922454, y: -0.000000059355436}
+  m_ConnectedAnchor: {x: 0.11922434, y: -0.00000003472597}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3367,8 +3374,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470734384}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -10.5573, y: 0.9361, z: 0}
-  m_LocalScale: {x: 1.350307, y: -0.11855838, z: 1}
+  m_LocalPosition: {x: -14.23, y: 0.58, z: 0}
+  m_LocalScale: {x: 0.79, y: -0.11855838, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1556203908}
@@ -3474,10 +3481,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3505,7 +3512,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.11927052, y: -0.034120094}
+  m_ConnectedAnchor: {x: 0.11927078, y: -0.018665843}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3590,7 +3597,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -10.555729, y: 3.6237457}
+  m_ConnectedAnchor: {x: -14.228429, y: 2.152413}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3644,10 +3651,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3675,7 +3682,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1496193, y: 0.12676059}
+  m_ConnectedAnchor: {x: 0.14961913, y: 0.071549036}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3729,10 +3736,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3760,7 +3767,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12920254, y: 0.034159236}
+  m_ConnectedAnchor: {x: 0.12920251, y: 0.018677123}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3814,10 +3821,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3845,7 +3852,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1192706, y: 0.03411495}
+  m_ConnectedAnchor: {x: 0.11927063, y: 0.018662756}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4182,10 +4189,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4213,7 +4220,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.14586942, y: -0.06730166}
+  m_ConnectedAnchor: {x: 0.14586939, y: -0.03704168}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4267,10 +4274,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4298,7 +4305,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10072637, y: -0.13250165}
+  m_ConnectedAnchor: {x: 0.10072656, y: -0.080224805}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4352,10 +4359,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4383,7 +4390,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.14240803, y: -0.0000027778012}
+  m_ConnectedAnchor: {x: 0.14240812, y: -0.0000016251599}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4468,10 +4475,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4499,7 +4506,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12258174, y: -0.034134686}
+  m_ConnectedAnchor: {x: 0.12258167, y: -0.018670157}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4553,10 +4560,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4584,7 +4591,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.11591287, y: -0.000000057706732}
+  m_ConnectedAnchor: {x: 0.11591304, y: -0.000000033761506}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4638,10 +4645,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4669,7 +4676,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.08610673, y: 0.000001827674}
+  m_ConnectedAnchor: {x: 0.0861068, y: 0.0000010692856}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4853,10 +4860,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4884,7 +4891,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.106184304, y: -0.06601026}
+  m_ConnectedAnchor: {x: 0.10618431, y: -0.036628548}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -4908,6 +4915,75 @@ Transform:
   m_Father: {fileID: 1470734387}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2030737136
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.946542
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0215732
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 798144777646085677, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082354412345224453, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_Name
+      value: silk
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082354412345224453, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19598e460b3e22e48ac996a767a31f89, type: 3}
 --- !u!1 &2048910082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4938,10 +5014,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4969,7 +5045,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.10933968, y: 0.034067303}
+  m_ConnectedAnchor: {x: 0.109339535, y: 0.01864967}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5172,7 +5248,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.059616685, y: -0.000024848534}
+  m_ConnectedAnchor: {x: 0.059616696, y: -0.000011199886}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5193,10 +5269,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5422,10 +5498,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 0.05
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5453,7 +5529,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.12584807, y: -0.00000006265293}
+  m_ConnectedAnchor: {x: 0.12584814, y: -0.000000036655262}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -5562,6 +5638,343 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!1001 &1579332242441501288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 344371097995154359, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.11922452
+      objectReference: {fileID: 0}
+    - target: {fileID: 344371097995154359, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.000000052114686
+      objectReference: {fileID: 0}
+    - target: {fileID: 493632764696754728, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.12916133
+      objectReference: {fileID: 0}
+    - target: {fileID: 493632764696754728, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000032898763
+      objectReference: {fileID: 0}
+    - target: {fileID: 507272369440778979, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.13582498
+      objectReference: {fileID: 0}
+    - target: {fileID: 507272369440778979, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.029639877
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271547431067816844, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.16241384
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271547431067816844, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.058682017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135226903114741405, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.11927073
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135226903114741405, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.029588748
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166983974700632870, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.17555723
+      objectReference: {fileID: 0}
+    - target: {fileID: 2166983974700632870, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029708363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277705593352429415, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_Name
+      value: white line (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277705593352429415, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362270026246053881, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.049788352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362270026246053881, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.028607933
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448736391257696395, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.14244667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448736391257696395, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029643524
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494541189113693212, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.13247177
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494541189113693212, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000027425222
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611536668956200529, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.16227718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611536668956200529, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000037464736
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770646472147657999, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.10933953
+      objectReference: {fileID: 0}
+    - target: {fileID: 2770646472147657999, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.029553209
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450683712112945934, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.1258922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450683712112945934, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029610895
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483221563605018521, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.11591354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483221563605018521, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000020220282
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738689564796170334, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.12589201
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738689564796170334, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.02961084
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840198889251059784, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.115912884
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840198889251059784, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000046474165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866803205484137481, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -6.9313245
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866803205484137481, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 3.040396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913475554419727023, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.11927073
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913475554419727023, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029593246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123564894646257106, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.100726396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123564894646257106, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.118248515
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206939670548392677, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.12920281
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206939670548392677, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.029617872
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376398464911133824, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.096270494
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376398464911133824, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.057040658
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629019347866212910, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.09627048
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629019347866212910, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.057039104
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037457169485332462, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.086106755
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037457169485332462, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000015773471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288973454211127860, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.10287932
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288973454211127860, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.057349406
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524466698912097308, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0584529
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642395678431720256, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.14961916
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642395678431720256, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.11092717
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911488000311939287, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.12584803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911488000311939287, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.000000055009913
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104750383422186089, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.05961679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104750383422186089, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.000028827853
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281897695162487384, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.10618429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281897695162487384, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.05748667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343655565302743894, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.14586943
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343655565302743894, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.05846268
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598657844319146809, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.1424081
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598657844319146809, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0000024842068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651716737256150005, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.10618405
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651716737256150005, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0574853
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694811601475667633, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.115912884
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694811601475667633, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.00000005066713
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049733002895934680, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.10271926
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049733002895934680, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029512305
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8447197655125336827, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465271444142696440, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.12258171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8465271444142696440, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.029604165
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff867ab40fe545d458017d83e7394f40, type: 3}
 --- !u!1001 &3487104674398148400
 PrefabInstance:
   m_ObjectHideFlags: 0

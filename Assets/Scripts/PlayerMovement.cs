@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isOnCeiling = false;
     public bool isAnimating = false;
     public bool isSilkClimbing = false;
+    public bool isHidden = false;
 
     private Transform silkTransform;
 
@@ -61,38 +62,37 @@ public class PlayerMovement : MonoBehaviour
                 rb.position = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.deltaTime);
             }
         }
-        if (!isClimbing && !isOnFloor && !isOnCeiling && !isSilkClimbing)
+        if (!isClimbing && !isOnCeiling && !isSilkClimbing && !isOnFloor)
         {
-            rb.gravityScale = 1f;
+            rb.gravityScale = 4f;
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Enter Wall");
+            //Debug.Log("On Wall");
             isClimbing = true;
         }
         else if (collision.gameObject.CompareTag("Floor"))
         {
-            Debug.Log("Enter Floor");
+            //Debug.Log("On Floor");
             isOnFloor = true;
-            rb.gravityScale = 1f;
+            rb.gravityScale = 4f;
         }
         else if (collision.gameObject.CompareTag("Ceiling"))
         {
-            Debug.Log("Enter Ceiling");
+            //Debug.Log("On Ceiling");
             isOnCeiling = true;
         }
         else if (collision.gameObject.CompareTag("GoUp"))
         {
-            Debug.Log("Animating");
+            //Debug.Log("Animating");
             isAnimating = true;
             bezierMoveScript.StartBezierMove();
         }
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -120,6 +120,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Item") ||
+            other.gameObject.layer == LayerMask.NameToLayer("Cover"))
+        {
+            isHidden = true;
+        }
+
         if (other.tag == "Silk")
         {
             rb.gravityScale = 0; // 停止重力影响，开始爬绳子
@@ -130,6 +136,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Item") ||
+            other.gameObject.layer == LayerMask.NameToLayer("Cover"))
+        {
+            isHidden = false;
+        }
+
         if (other.tag == "Silk")
         {
             isSilkClimbing = false;

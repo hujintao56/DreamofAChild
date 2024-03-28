@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -24,13 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
     public BezierMove bezierMoveScript; // 引用BezierMove脚本
     public InteractionSystem interactionSystem;
+    public Animator animator;
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        Flip();
+        if(math.abs(horizontal) >= math.abs(vertical))
+            animator.SetFloat("Speed", math.abs(horizontal));
+        else if (math.abs(vertical) > math.abs(horizontal))
+            animator.SetFloat("Speed", math.abs(vertical));
+
+        //Flip();
     }
 
     private void FixedUpdate()

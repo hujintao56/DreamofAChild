@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
 {
-    public Transform cameraTransform;
-    public float parallaxFactor = 0.1f; // 这个值越小，背景移动得越慢
+    public Transform playerTransform;
+    public float parallaxSpeed = 0.02f; // 背景移动的速度
 
-    private Vector3 previousCameraPosition;
+    private Vector3 previousPlayerPosition;
 
     void Start()
     {
-        previousCameraPosition = cameraTransform.position;
+        if (playerTransform != null)
+        {
+            previousPlayerPosition = playerTransform.position;
+        }
     }
 
     void Update()
     {
-        Vector3 deltaMovement = cameraTransform.position - previousCameraPosition;
-        transform.position += deltaMovement * parallaxFactor;
-        previousCameraPosition = cameraTransform.position;
+        if (playerTransform != null)
+        {
+            // 计算玩家的移动差值
+            Vector3 deltaPlayerPosition = playerTransform.position - previousPlayerPosition;
+
+            // 根据玩家移动的反方向移动背景
+            transform.localPosition -= new Vector3(deltaPlayerPosition.x * parallaxSpeed, deltaPlayerPosition.y * parallaxSpeed, 0);
+
+            // 更新玩家的上一个位置
+            previousPlayerPosition = playerTransform.position;
+        }
     }
 }

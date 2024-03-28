@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class BezierMove : MonoBehaviour
 {
-    public Transform startPoint;
-    public Transform controlPoint;
-    public Transform endPoint;
+    public List<Transform> startPoints;
+    public List<Transform> controlPoints;
+    public List<Transform> endPoints;
+    private Transform startPoint;
+    private Transform controlPoint;
+    private Transform endPoint;
     private float t;
     public float duration = 1.0f; // 从A到B移动的持续时间
     private Quaternion startRotation;
     private Quaternion endRotation;
     private bool isMoving = false; // 添加一个标志来控制移动状态
+    public int num = 0;
 
     void Update()
     {
+        startPoint = startPoints[num];
+        endPoint = endPoints[num];
+        controlPoint = controlPoints[num];
+
         if (isMoving) // 如果isMoving为true，则执行移动和旋转
         {
             if (t < 1.0f)

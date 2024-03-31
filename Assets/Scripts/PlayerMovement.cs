@@ -95,7 +95,11 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("On Ceiling");
             isOnCeiling = true;
         }
-        else if (collision.gameObject.CompareTag("GoUp"))
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("GoUp"))
         {
             //Debug.Log("Animating");
             isAnimating = true;

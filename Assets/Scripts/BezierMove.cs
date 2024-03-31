@@ -39,6 +39,7 @@ public class BezierMove : MonoBehaviour
             else
             {
                 isMoving = false; // 当动画完成时，停止移动
+                num++;
             }
         }
     }
